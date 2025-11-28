@@ -4,6 +4,21 @@ print(a,"line 3")
 curObj=a.cursor() # you need to have it
 print("you are in adminfeatures file where you have all admin features like adding, updating etc..")
 
+def add_task():
+    print("\n--- Add New Task ---")
+    
+    task_id = int(input("Enter task name: "))
+    task_topic = input("Enter task topic: ")
+    task_doc = input("Enter Google Drive doc link: ")
+    task_issued_date = input("Enter issued date (YYYY-MM-DD): ")
+
+    query="insert into tasks2 (task_id,task_topic,task_doc,task_issued_date) values(%s,%s,%s,%s)"
+    curObj.execute(query,(task_id,task_topic,task_doc,task_issued_date))
+    a.commit()
+    print("task uploaded successfully..........")
+
+def add_class_recording():
+    pass
 def delete_student():
     print("you are using deleting student feature")
     s_id=int(input("enter stude id here to update his details ....   "))
